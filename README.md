@@ -10,6 +10,7 @@
   - [Deployment](#deployment)
     - [systemd service](#systemd-service)
     - [Container](#container)
+  - [Observability](#observability)
   - [References](#references)
 
 
@@ -59,6 +60,10 @@ sudo systemctl status watt-up
 
 ### Container
 Not implemented, because not needed yet.
+
+## Observability
+To visualize the collected metrics, make use of the Prometheus scrape config and Grafana dashboard in the `observability/` folder:
+![Dashboard](./doc/dashboard.png "Dashboard")
 
 
 ## References
