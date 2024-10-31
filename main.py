@@ -4,13 +4,7 @@ import httpx
 import uvicorn
 
 
-app = FastAPI(
-    title="Watt-up API",
-    description="A a small and convenient converter which transforms energy consumption metrics of a Shelly device to scrapable Prometheus metrics.",
-    version="1.0.0"
-)
 router = APIRouter(prefix='/api/v1', tags=['api_v1'])
-app.include_router(router)
 
 @router.get("/energyconsumption/{upstream}", response_class=PlainTextResponse)
 async def get_energy_metrics(upstream: str):
@@ -34,10 +28,17 @@ current {json["current"]}
 temperature {json["temperature"]["tC"]}
 """
 
+app = FastAPI(
+    title="Watt-up API",
+    description="A a small and convenient converter which transforms energy consumption metrics of a Shelly device to scrapable Prometheus metrics.",
+    version="1.0.0"
+)
+app.include_router(router)
 
 
 def main() -> None:
     uvicorn.run("main:app", host="0.0.0.0")
+
 
 if __name__ == "__main__":
     main()
