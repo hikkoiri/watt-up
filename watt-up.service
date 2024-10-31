@@ -1,0 +1,12 @@
+[Unit]
+Description=Watt Up
+After=network-online.target
+[Service]
+Type=simple
+Restart=always
+User=pi
+WorkingDirectory=/home/pi/watt-up
+ExecStart=/usr/bin/python3 main.py
+
+[Install]
+WantedBy=multi-user.target
